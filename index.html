@@ -2,58 +2,69 @@
 <html lang="de">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Fenstergucker</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;background:#111b21;display:flex;justify-content:center;align-items:center;min-height:100vh}
 .app{width:100%;max-width:480px;height:100vh;max-height:920px;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 0 60px rgba(0,0,0,.6)}
-.header{background:#202c33;padding:8px 14px;display:flex;align-items:center;gap:10px;flex-shrink:0;z-index:10}
-.group-avatar{width:42px;height:42px;border-radius:50%;overflow:hidden;flex-shrink:0;background:#0d2233}
-.header-info{flex:1;min-width:0}
-.header-info h1{color:#e9edef;font-size:16px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.header-info p{color:#8696a0;font-size:12px;margin-top:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.header-actions{display:flex;gap:18px}
-.header-actions svg{fill:#aebac1;cursor:pointer}
-.chat-area{flex:1;overflow-y:auto;padding:10px 10px 6px;background:#0b141a;background-image:radial-gradient(circle at 1px 1px,rgba(255,255,255,.018) 1px,transparent 0);background-size:22px 22px;display:flex;flex-direction:column;gap:2px}
-.chat-area::-webkit-scrollbar{width:4px}
-.chat-area::-webkit-scrollbar-thumb{background:#2a3942;border-radius:2px}
-.empty-state{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px 30px 40px;color:#8696a0;text-align:center;gap:14px;pointer-events:none;user-select:none}
-.empty-state h2{color:#e9edef;font-size:18px;font-weight:600}
-.empty-state p{font-size:13px;line-height:1.7}
-.date-divider{text-align:center;margin:8px 0 4px;flex-shrink:0}
-.date-divider span{background:#182229;color:#8696a0;font-size:12px;padding:4px 12px;border-radius:7px;border:1px solid #2a3942}
-.system-msg{text-align:center;margin:4px 0 10px;flex-shrink:0}
-.system-msg span{background:#182229;color:#8696a0;font-size:11.5px;padding:5px 14px;border-radius:7px;border:1px solid #2a3942;display:inline-block;line-height:1.6}
-.msg-row{display:flex;flex-direction:column;max-width:80%;flex-shrink:0}
-.msg-row.sent{align-self:flex-end}
-.msg-row.received{align-self:flex-start}
-.sender-label{font-size:12.5px;font-weight:600;margin-bottom:2px;padding-left:3px}
-.bubble{padding:6px 10px 20px 10px;border-radius:8px;position:relative;word-break:break-word;min-width:70px}
-.sent .bubble{background:#005c4b;border-radius:8px 0 8px 8px}
-.received .bubble{background:#202c33;border-radius:0 8px 8px 8px}
-.bubble-text{font-size:14.5px;line-height:1.45;color:#e9edef}
-.bubble-meta{position:absolute;bottom:4px;right:8px;display:flex;align-items:center;gap:3px}
-.bubble-time{font-size:11px;color:#8696a0;white-space:nowrap}
-.check-icon{font-size:12px;color:#53bdeb;letter-spacing:-1px}
-.typing-row{align-self:flex-start;display:flex;flex-direction:column;flex-shrink:0}
-.typing-name{font-size:12.5px;font-weight:600;margin-bottom:2px;padding-left:3px}
-.typing-bubble{background:#202c33;border-radius:0 8px 8px 8px;padding:11px 16px;display:flex;gap:5px;align-items:center;width:fit-content}
+.header{background:#202c33;padding:8px 14px;display:flex;align-items:center;gap:10px;flex-shrink:0}
+.gav{width:42px;height:42px;border-radius:50%;overflow:hidden;flex-shrink:0;background:#0d2233}
+.hi{flex:1;min-width:0}
+.hi h1{color:#e9edef;font-size:16px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.hi p{color:#8696a0;font-size:12px;margin-top:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.hicons{display:flex;gap:18px}
+.hicons svg{fill:#aebac1;cursor:pointer}
+.api-bar{background:#1a3a2a;border-bottom:1px solid #2a5a3a;padding:8px 14px;display:flex;flex-direction:column;gap:6px;flex-shrink:0}
+.api-bar-top{display:flex;align-items:center;justify-content:space-between}
+.api-bar-top span{color:#8696a0;font-size:12px}
+.api-st{font-size:11px;padding:3px 8px;border-radius:4px}
+.api-st.ok{background:#0d2a0d;color:#7bc67e}
+.api-st.no{background:#2a2a0d;color:#fcbd2d}
+.api-bar-bot{display:flex;gap:6px}
+.api-iw{flex:1;background:#0b141a;border:1px solid #2a3942;border-radius:6px;padding:6px 10px;display:flex}
+.api-iw input{flex:1;background:transparent;border:none;outline:none;color:#e9edef;font-size:12px;font-family:inherit;min-width:0}
+.api-iw input::placeholder{color:#4a5a62}
+.api-btn{background:#00a884;border:none;border-radius:6px;color:#fff;font-size:13px;padding:0 16px;cursor:pointer;flex-shrink:0}
+.api-btn:hover{background:#00c49a}
+.chat{flex:1;overflow-y:auto;padding:10px;background:#0b141a;background-image:radial-gradient(circle at 1px 1px,rgba(255,255,255,.018) 1px,transparent 0);background-size:22px 22px;display:flex;flex-direction:column;gap:2px}
+.chat::-webkit-scrollbar{width:4px}
+.chat::-webkit-scrollbar-thumb{background:#2a3942;border-radius:2px}
+.empty{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px 30px 40px;color:#8696a0;text-align:center;gap:14px;pointer-events:none;user-select:none}
+.empty h2{color:#e9edef;font-size:18px;font-weight:600}
+.empty p{font-size:13px;line-height:1.7}
+.datediv{text-align:center;margin:8px 0 4px;flex-shrink:0}
+.datediv span{background:#182229;color:#8696a0;font-size:12px;padding:4px 12px;border-radius:7px;border:1px solid #2a3942}
+.sysmsg{text-align:center;margin:4px 0 10px;flex-shrink:0}
+.sysmsg span{background:#182229;color:#8696a0;font-size:11.5px;padding:5px 14px;border-radius:7px;border:1px solid #2a3942;display:inline-block;line-height:1.6}
+.mrow{display:flex;flex-direction:column;max-width:80%;flex-shrink:0}
+.mrow.sent{align-self:flex-end}
+.mrow.recv{align-self:flex-start}
+.slbl{font-size:12.5px;font-weight:600;margin-bottom:2px;padding-left:3px}
+.bub{padding:6px 10px 20px;border-radius:8px;position:relative;word-break:break-word;min-width:70px}
+.sent .bub{background:#005c4b;border-radius:8px 0 8px 8px}
+.recv .bub{background:#202c33;border-radius:0 8px 8px 8px}
+.btxt{font-size:14.5px;line-height:1.45;color:#e9edef}
+.bmeta{position:absolute;bottom:4px;right:8px;display:flex;align-items:center;gap:3px}
+.btime{font-size:11px;color:#8696a0;white-space:nowrap}
+.chk{font-size:12px;color:#53bdeb;letter-spacing:-1px}
+.trow{align-self:flex-start;display:flex;flex-direction:column;flex-shrink:0}
+.tnm{font-size:12.5px;font-weight:600;margin-bottom:2px;padding-left:3px}
+.tbub{background:#202c33;border-radius:0 8px 8px 8px;padding:11px 16px;display:flex;gap:5px;align-items:center}
 .dot{width:8px;height:8px;background:#8696a0;border-radius:50%;animation:pulse 1.3s infinite ease-in-out}
 .dot:nth-child(1){animation-delay:0s}
 .dot:nth-child(2){animation-delay:.22s}
 .dot:nth-child(3){animation-delay:.44s}
 @keyframes pulse{0%,80%,100%{transform:scale(.65);opacity:.35}40%{transform:scale(1);opacity:1}}
-.input-area{background:#202c33;padding:8px 10px;display:flex;align-items:flex-end;gap:8px;flex-shrink:0}
-.input-wrap{flex:1;background:#2a3942;border-radius:22px;display:flex;align-items:flex-end;padding:7px 14px;gap:8px}
-.emoji-icon{fill:#8696a0;flex-shrink:0;margin-bottom:1px}
-textarea#msgInput{flex:1;background:transparent;border:none;outline:none;color:#e9edef;font-size:15px;resize:none;max-height:110px;min-height:22px;line-height:1.5;font-family:inherit;overflow-y:auto}
-textarea#msgInput::placeholder{color:#8696a0}
-textarea#msgInput::-webkit-scrollbar{width:0}
-.send-btn{background:#00a884;border:none;border-radius:50%;width:46px;height:46px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background .15s,transform .1s}
-.send-btn:hover{background:#00c49a}
-.send-btn:active{background:#008f72;transform:scale(.94)}
-.send-btn svg{fill:white}
+.iarea{background:#202c33;padding:8px 10px;display:flex;align-items:flex-end;gap:8px;flex-shrink:0}
+.iwrap{flex:1;background:#2a3942;border-radius:22px;display:flex;align-items:flex-end;padding:7px 14px;gap:8px}
+.eico{fill:#8696a0;flex-shrink:0;margin-bottom:1px}
+textarea{flex:1;background:transparent;border:none;outline:none;color:#e9edef;font-size:15px;resize:none;max-height:110px;min-height:22px;line-height:1.5;font-family:inherit;overflow-y:auto}
+textarea::placeholder{color:#8696a0}
+.sbtn{background:#00a884;border:none;border-radius:50%;width:46px;height:46px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background .15s,transform .1s}
+.sbtn:hover{background:#00c49a}
+.sbtn:active{background:#008f72;transform:scale(.94)}
+.sbtn svg{fill:white}
 </style>
 </head>
 <body>
@@ -61,7 +72,7 @@ textarea#msgInput::-webkit-scrollbar{width:0}
 
 <!-- HEADER -->
 <div class="header">
-  <div class="group-avatar">
+  <div class="gav">
     <svg viewBox="0 0 42 42" xmlns="http://www.w3.org/2000/svg">
       <rect width="42" height="42" fill="#0d2233"/>
       <ellipse cx="11" cy="11" rx="7" ry="3.5" fill="#1a3a52" opacity=".9"/>
@@ -78,56 +89,55 @@ textarea#msgInput::-webkit-scrollbar{width:0}
       <ellipse cx="21" cy="28" rx="4.5" ry="5" fill="#0c1820"/>
     </svg>
   </div>
-  <div class="header-info">
+  <div class="hi">
     <h1>Fenstergucker &#x1F440;</h1>
     <p>Klaus B., Brigitte H., Horst M., Sabine K., Dieter W.</p>
   </div>
-  <div class="header-actions">
+  <div class="hicons">
     <svg width="22" height="22" viewBox="0 0 24 24"><path d="M17 10.5V7c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-3.5l4 4v-11l-4 4z"/></svg>
     <svg width="22" height="22" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
     <svg width="22" height="22" viewBox="0 0 24 24"><path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/></svg>
   </div>
 </div>
 
-<!-- CHAT AREA -->
-<div class="chat-area" id="chatArea">
-  <div class="empty-state" id="emptyState">
-    <svg width="210" height="200" viewBox="0 0 210 200" xmlns="http://www.w3.org/2000/svg">
+<!-- API KEY BAR -->
+<div class="api-bar">
+  <div class="api-bar-top">
+    <span>&#x1F511; HuggingFace API Key</span>
+    <span class="api-st no" id="apiStatus">kein Key</span>
+  </div>
+  <div class="api-bar-bot">
+    <div class="api-iw">
+      <input type="password" id="apiKeyInput" placeholder="hf_xxxxxxxxxxxxxxxx" maxlength="60">
+    </div>
+    <button class="api-btn" id="apiSaveBtn">Speichern</button>
+  </div>
+</div>
+
+<!-- CHAT -->
+<div class="chat" id="chat">
+  <div class="empty" id="emptyState">
+    <svg width="200" height="190" viewBox="0 0 210 200" xmlns="http://www.w3.org/2000/svg">
       <rect x="12" y="6" width="186" height="152" rx="5" fill="#0d2233" stroke="#2a5a7a" stroke-width="3"/>
       <rect x="15" y="9" width="180" height="146" rx="3" fill="#091929"/>
       <circle cx="32" cy="26" r="1.5" fill="white" opacity=".5"/>
-      <circle cx="70" cy="20" r="1" fill="white" opacity=".45"/>
+      <circle cx="70" cy="20" r="1" fill="white" opacity=".4"/>
       <circle cx="138" cy="17" r="1.5" fill="white" opacity=".5"/>
-      <circle cx="172" cy="30" r="1" fill="white" opacity=".4"/>
-      <circle cx="52" cy="56" r="2" fill="white" opacity=".35"/>
-      <circle cx="94" cy="43" r="1.5" fill="white" opacity=".4"/>
-      <circle cx="158" cy="53" r="2" fill="white" opacity=".35"/>
-      <circle cx="118" cy="66" r="1.5" fill="white" opacity=".3"/>
       <ellipse cx="56" cy="36" rx="26" ry="11" fill="#1a3a58" opacity=".95"/>
       <ellipse cx="42" cy="40" rx="16" ry="9" fill="#1a3a58" opacity=".95"/>
-      <ellipse cx="68" cy="40" rx="14" ry="8" fill="#1a3a58" opacity=".85"/>
       <ellipse cx="153" cy="26" rx="28" ry="12" fill="#1a3a58" opacity=".9"/>
-      <ellipse cx="140" cy="30" rx="16" ry="9" fill="#1a3a58" opacity=".9"/>
-      <ellipse cx="166" cy="30" rx="16" ry="8" fill="#1a3a58" opacity=".8"/>
-      <ellipse cx="108" cy="58" rx="20" ry="8" fill="#152d44" opacity=".7"/>
-      <circle cx="170" cy="21" r="9" fill="#f5f0d8" opacity=".18"/>
-      <circle cx="170" cy="21" r="5" fill="#f5f0d8" opacity=".28"/>
-      <circle cx="28" cy="95" r="2.2" fill="white" opacity=".45"/>
-      <circle cx="74" cy="108" r="1.8" fill="white" opacity=".4"/>
-      <circle cx="120" cy="90" r="2" fill="white" opacity=".4"/>
-      <circle cx="162" cy="102" r="1.8" fill="white" opacity=".38"/>
-      <circle cx="48" cy="120" r="1.5" fill="white" opacity=".35"/>
-      <circle cx="140" cy="118" r="2" fill="white" opacity=".35"/>
+      <circle cx="170" cy="21" r="6" fill="#f5f0d8" opacity=".25"/>
+      <circle cx="28" cy="95" r="2" fill="white" opacity=".4"/>
+      <circle cx="74" cy="108" r="1.8" fill="white" opacity=".38"/>
+      <circle cx="120" cy="90" r="2" fill="white" opacity=".38"/>
+      <circle cx="162" cy="102" r="1.8" fill="white" opacity=".35"/>
       <rect x="15" y="120" width="180" height="35" fill="#0a1a0a"/>
       <ellipse cx="105" cy="120" rx="90" ry="8" fill="#d8eef5" opacity=".16"/>
       <ellipse cx="42" cy="147" rx="9" ry="4" fill="#1a2a1a" opacity=".65"/>
-      <ellipse cx="82" cy="150" rx="7" ry="3" fill="#1a2a1a" opacity=".6"/>
       <ellipse cx="138" cy="148" rx="10" ry="4" fill="#1a2a1a" opacity=".65"/>
-      <ellipse cx="172" cy="146" rx="8" ry="3" fill="#1a2a1a" opacity=".6"/>
       <line x1="105" y1="9" x2="105" y2="155" stroke="#2a5a7a" stroke-width="2.5"/>
       <line x1="15" y1="82" x2="195" y2="82" stroke="#2a5a7a" stroke-width="2.5"/>
       <rect x="6" y="155" width="198" height="13" rx="4" fill="#1e4060"/>
-      <rect x="6" y="162" width="198" height="4" rx="2" fill="#16334d"/>
       <rect x="58" y="144" width="14" height="24" rx="6" fill="#0a1520"/>
       <ellipse cx="65" cy="166" rx="12" ry="6" fill="#0a1520"/>
       <rect x="138" y="144" width="14" height="24" rx="6" fill="#0a1520"/>
@@ -136,156 +146,225 @@ textarea#msgInput::-webkit-scrollbar{width:0}
       <rect x="98" y="141" width="14" height="18" rx="5" fill="#0c1a28"/>
       <ellipse cx="105" cy="130" rx="21" ry="22" fill="#0f2030"/>
       <ellipse cx="105" cy="112" rx="21" ry="10" fill="#080f17"/>
-      <ellipse cx="84" cy="130" rx="4" ry="5.5" fill="#0f2030"/>
-      <ellipse cx="126" cy="130" rx="4" ry="5.5" fill="#0f2030"/>
-      <ellipse cx="105" cy="103" rx="18" ry="10" fill="white" opacity=".025"/>
     </svg>
     <h2>Willkommen bei den Fensterguckern!</h2>
-    <p>Schreib etwas in den Chat &ndash;<br>und erz&auml;hl uns, was du gerade drau&szlig;en siehst. &#x1F327;&#xFE0F; &#x2744;&#xFE0F; &#x2601;&#xFE0F; &#x1F324;&#xFE0F;</p>
+    <p>Schreib etwas in den Chat und erz&#228;hl,<br>was du gerade drau&#223;en siehst. &#x2744;&#xFE0F; &#x2601;&#xFE0F; &#x1F324;&#xFE0F;</p>
   </div>
 </div>
 
-<!-- INPUT AREA -->
-<div class="input-area">
-  <div class="input-wrap">
-    <svg class="emoji-icon" width="24" height="24" viewBox="0 0 24 24">
-      <path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm3.5-9c.83 0 1.5-.67 1.5-1.5S16.33 8 15.5 8 14 8.67 14 9.5s.67 1.5 1.5 1.5zm-7 0c.83 0 1.5-.67 1.5-1.5S9.33 8 8.5 8 7 8.67 7 9.5 7.67 11 8.5 11zm3.5 6.5c2.33 0 4.31-1.46 5.11-3.5H6.89c.8 2.04 2.78 3.5 5.11 3.5z"/>
-    </svg>
-    <textarea id="msgInput" placeholder="Nachricht" rows="1"></textarea>
+<!-- INPUT -->
+<div class="iarea">
+  <div class="iwrap">
+    <svg class="eico" width="24" height="24" viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm3.5-9c.83 0 1.5-.67 1.5-1.5S16.33 8 15.5 8 14 8.67 14 9.5s.67 1.5 1.5 1.5zm-7 0c.83 0 1.5-.67 1.5-1.5S9.33 8 8.5 8 7 8.67 7 9.5 7.67 11 8.5 11zm3.5 6.5c2.33 0 4.31-1.46 5.11-3.5H6.89c.8 2.04 2.78 3.5 5.11 3.5z"/></svg>
+    <textarea id="msg" placeholder="Nachricht" rows="1"></textarea>
   </div>
-  <button class="send-btn" id="sendBtn" title="Senden">
+  <button class="sbtn" id="sendBtn">
     <svg width="22" height="22" viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
   </button>
 </div>
-</div>
+
+</div><!-- /app -->
 <script>
-'use strict';
 const USERS=[
-  {name:'Klaus B.',color:'#53bdeb'},
-  {name:'Brigitte H.',color:'#7bc67e'},
-  {name:'Horst M.',color:'#fcbd2d'},
-  {name:'Sabine K.',color:'#ff8fab'},
-  {name:'Dieter W.',color:'#d3a2f7'}
+  {name:"Klaus B.",    color:"#53bdeb"},
+  {name:"Brigitte H.", color:"#7bc67e"},
+  {name:"Horst M.",    color:"#fcbd2d"},
+  {name:"Sabine K.",   color:"#ff8fab"},
+  {name:"Dieter W.",   color:"#d3a2f7"}
 ];
 const QUESTIONS=[
-  'Seht ihr das auch? Die Wolken haengen heute so tief...',
-  'Ist das gerade Schnee oder doch nur gefrierender Regen?',
-  'Wird das heute noch ein Gewitter, was meint ihr?',
-  'Hat jemand die Schaefchenwolken vorhin beobachtet?',
-  'Warum liegt da eigentlich ein einzelner Stein mitten auf dem Gehweg?',
-  'Ist das Gras bei euch auch schon so gelb und ausgetrocknet?',
-  'Kennt jemand diese seltsame Wolkenformation gerade?',
-  'Wann kommt eigentlich endlich mal wieder die Sonne?',
-  'Sehe ich das richtig \u2013 schneit es gerade nahezu horizontal?',
-  'Hat jemand die Mondfinsternis letzte Nacht beobachtet?',
-  'Warum ist der Himmel heute Abend so ungew\u00f6hnlich orange?',
-  'Ist das Eis auf der Stra\u00dfe bei euch auch noch nicht getaut?',
-  'Habt ihr den doppelten Regenbogen vorhin gesehen?!',
-  'F\u00e4llt euch auf, dass es dieses Jahr kaum richtig geschneit hat?',
-  'Wer wei\u00df wie hoch die Schneeschicht in seinem Garten ist?',
-  'Ist das da Hagel oder doch nur sehr starker Regen?',
-  'Kann jemand die Windgeschwindigkeit gerade ungef\u00e4hr einsch\u00e4tzen?',
-  'Warum leuchtet das Gras nach dem Regen immer so intensiv gr\u00fcn?',
-  'Hat jemand schon mal einen Eiskristall unter der Lupe fotografiert?',
-  'Zieht da bei euch auch gerade ein Gewitter auf?',
-  'Ist bei euch der Baum im Sturm auch so gef\u00e4hrlich am Schwanken?',
-  'Findet ihr Graupel eigentlich sch\u00f6ner als richtigen Pulverschnee?',
-  'Wie lange glaubt ihr dauert dieses Tiefdruckgebiet noch an?',
-  'Hat jemand das gro\u00dfe schwarze Tier im Nachbargarten gesehen?',
-  'Warum gl\u00e4nzen nasse Steine nach dem Regen eigentlich so sch\u00f6n?',
-  'Sieht der Himmel bei euch auch aus wie ein riesiges Aquarell?',
-  'Ist der erste Frost heute Nacht auch bei euch angekommen?',
-  'Habt ihr die Stare auf dem Dach heute fr\u00fch schon geh\u00f6rt?',
-  'Warum ziehen die Wolken heute so ungew\u00f6hnlich schnell?',
-  'Wann wurde das Stra\u00dfenpflaster hier eigentlich zuletzt gewaschen?'
+  "Seht ihr das auch? Die Wolken h\u00e4ngen heute so tief...",
+  "Ist das gerade Schnee oder doch nur gefrierender Regen?",
+  "Wird das heute noch ein Gewitter, was meint ihr?",
+  "Hat jemand die Sch\u00e4fchenwolken vorhin beobachtet?",
+  "Warum liegt da ein einzelner Stein mitten auf dem Gehweg?",
+  "Ist das Gras bei euch auch schon so gelb und ausgetrocknet?",
+  "Kennt jemand diese seltsame Wolkenformation gerade?",
+  "Wann kommt endlich mal wieder die Sonne?",
+  "Schneit es gerade nahezu horizontal?",
+  "Hat jemand die Mondfinsternis letzte Nacht beobachtet?",
+  "Warum ist der Himmel heute Abend so ungew\u00f6hnlich orange?",
+  "Ist das Eis auf der Stra\u00dfe bei euch auch noch nicht getaut?",
+  "Habt ihr den doppelten Regenbogen vorhin gesehen?!",
+  "F\u00e4llt euch auf, dass es dieses Jahr kaum richtig geschneit hat?",
+  "Wer wei\u00df wie hoch die Schneeschicht in seinem Garten ist?",
+  "Ist das da Hagel oder doch nur sehr starker Regen?",
+  "Kann jemand die Windgeschwindigkeit gerade einsch\u00e4tzen?",
+  "Warum leuchtet das Gras nach dem Regen immer so intensiv gr\u00fcn?",
+  "Hat jemand schon mal einen Eiskristall unter der Lupe fotografiert?",
+  "Zieht da bei euch auch gerade ein Gewitter auf?",
+  "Ist bei euch der Baum im Sturm auch so gef\u00e4hrlich am Schwanken?",
+  "Findet ihr Graupel sch\u00f6ner als richtigen Pulverschnee?",
+  "Wie lange dauert dieses Tiefdruckgebiet noch an?",
+  "Hat jemand das gro\u00dfe schwarze Tier im Nachbargarten gesehen?",
+  "Warum gl\u00e4nzen nasse Steine nach dem Regen so sch\u00f6n?",
+  "Sieht der Himmel bei euch auch aus wie ein riesiges Aquarell?",
+  "Ist der erste Frost heute Nacht auch bei euch angekommen?",
+  "Habt ihr die Stare auf dem Dach heute fr\u00fch schon geh\u00f6rt?",
+  "Warum ziehen die Wolken heute so ungew\u00f6hnlich schnell?",
+  "Wann wurde das Stra\u00dfenpflaster hier eigentlich zuletzt gewaschen?"
 ];
 const STATEMENTS=[
-  'Die Wolken sehen heute aus wie riesige Watteb\u00e4usche. Traumhaft.',
-  'Es schneit! Endlich mal wieder richtiger Winter! \u2744\ufe0f',
-  'Das Gras ist komplett vereist. Ich gehe heute definitiv nicht raus.',
-  'Der Stein dort liegt jetzt seit drei Wochen an derselben Stelle. Merkw\u00fcrdig.',
-  'Heute Morgen war der Nebel so dicht, ich konnte die Stra\u00dfe nicht mehr sehen.',
-  'Die Sonne geht gerade so wundersch\u00f6n unter. Unglaublich. \ud83c\udf45',
-  'Es hagelt! Mein neues Auto steht drau\u00dfen!!!',
-  'Der Wind pfeift hier so laut durch die Fensterritzen. Fast unheimlich.',
-  'Das Eis auf den Pf\u00fctzen sieht aus wie perfektes, durchsichtiges Glas.',
-  'Die Sch\u00e4fchenwolken ziehen heute in perfekten Reihen vorbei. \u2601\ufe0f\u2601\ufe0f\u2601\ufe0f',
-  'Erster Schnee! Ich hab mein Kind extra geweckt, damit es das sieht.',
-  'Die Birke drau\u00dfen hat jetzt alle Bl\u00e4tter verloren. Herbst ist durch.',
-  'Es ist so grau heute. So ein richtiger, echter Novembertag.',
-  'Der Regenbogen gerade war doppelt. DOPPELTER REGENBOGEN. \ud83c\udf08\ud83c\udf08',
-  'Die Tauben sitzen alle aufgeplustert auf dem Dach. Sturm kommt bestimmt.',
-  'Das Moos auf den alten Steinen leuchtet nach dem Regen so intensiv gr\u00fcn.',
-  'Der Frost hat heute Nacht Blumenmuster ans Fenster gemalt. So zart!',
-  'So ein Sturm! Die M\u00fclltonne liegt quer auf der Stra\u00dfe.',
-  'Beim Schneefall h\u00f6re ich immer diese ganz besondere Stille. Einzigartig. \ud83e\udd0d',
-  'Die Kastanien fallen gerade alle gleichzeitig runter. Herbst ist offiziell da.',
-  'Die nasse Stra\u00dfe gl\u00e4nzt gerade wie ein perfekter Spiegel.',
-  'Heute Morgen lag ein Igel zusammengerollt im Garten. Zu s\u00fc\u00df! \ud83e\udd94',
-  'Die Wolke da oben sieht aus wie ein riesiger Hase. Seht ihr das?! \ud83d\udc07',
-  'Gestern Abend war der Mond so gro\u00df, ich dachte, er f\u00e4llt gleich runter.',
-  'Der erste Schnee liegt auf den \u00c4sten wie frisch gesiebter Puderzucker.',
-  'Minus acht Grad. Ich heize, habe Tee und schaue aus dem Fenster. Perfekt.',
-  'Die Amseln singen schon wieder. Der Fr\u00fchling kommt! \ud83d\udc26',
-  'Heute war der Himmel gleichzeitig in drei verschiedenen Farben. Wahnsinn.',
-  'Der Regen trommelt so laut aufs Dach, ich kann kaum schlafen.',
-  'Nach dem Schneefall ist es drau\u00dfen so still. Die ganze Welt h\u00e4lt den Atem an. \ud83e\udd0d'
+  "Die Wolken sehen heute aus wie riesige Watteb\u00e4usche. Traumhaft.",
+  "Es schneit! Endlich mal wieder richtiger Winter! \u2744\ufe0f",
+  "Das Gras ist komplett vereist. Ich gehe heute definitiv nicht raus.",
+  "Der Stein dort liegt jetzt seit drei Wochen an derselben Stelle.",
+  "Heute Morgen war der Nebel so dicht, ich konnte die Stra\u00dfe nicht sehen.",
+  "Die Sonne geht gerade so wundersch\u00f6n unter. Unglaublich.",
+  "Es hagelt! Mein neues Auto steht drau\u00dfen!!!",
+  "Der Wind pfeift hier so laut durch die Fensterritzen.",
+  "Das Eis auf den Pf\u00fctzen sieht aus wie durchsichtiges Glas.",
+  "Die Sch\u00e4fchenwolken ziehen heute in perfekten Reihen vorbei.",
+  "Erster Schnee! Ich hab mein Kind extra geweckt, damit es das sieht.",
+  "Die Birke drau\u00dfen hat jetzt alle Bl\u00e4tter verloren. Herbst ist durch.",
+  "Es ist so grau heute. So ein richtiger, echter Novembertag.",
+  "Der Regenbogen gerade war doppelt. DOPPELTER REGENBOGEN! \ud83c\udf08",
+  "Die Tauben sitzen alle aufgeplustert auf dem Dach. Sturm kommt.",
+  "Das Moos auf den alten Steinen leuchtet nach dem Regen so gr\u00fcn.",
+  "Der Frost hat heute Nacht Blumenmuster ans Fenster gemalt. So zart!",
+  "So ein Sturm! Die M\u00fclltonne liegt quer auf der Stra\u00dfe.",
+  "Beim Schneefall h\u00f6re ich immer diese ganz besondere Stille.",
+  "Die Kastanien fallen gerade alle gleichzeitig runter.",
+  "Die nasse Stra\u00dfe gl\u00e4nzt gerade wie ein perfekter Spiegel.",
+  "Heute Morgen lag ein Igel zusammengerollt im Garten. \ud83e\udd94",
+  "Die Wolke da oben sieht aus wie ein riesiger Hase. Seht ihr das?!",
+  "Gestern Abend war der Mond so gro\u00df, ich dachte er f\u00e4llt runter.",
+  "Der erste Schnee liegt auf den \u00c4sten wie Puderzucker.",
+  "Minus acht Grad. Tee, Heizung und aus dem Fenster schauen. Perfekt.",
+  "Die Amseln singen schon wieder. Der Fr\u00fchling kommt! \ud83d\udc26",
+  "Heute war der Himmel in drei verschiedenen Farben. Wahnsinn.",
+  "Der Regen trommelt so laut aufs Dach, ich kann kaum schlafen.",
+  "Nach dem Schneefall ist es so still. Die Welt h\u00e4lt den Atem an."
 ];
 const ALL=[...QUESTIONS,...STATEMENTS];
-let chatStarted=false,busy=false;
-const chatArea=document.getElementById('chatArea');
-const msgInput=document.getElementById('msgInput');
-const sendBtn=document.getElementById('sendBtn');
-function now(){return new Date().toLocaleTimeString('de-DE',{hour:'2-digit',minute:'2-digit'});}
-function randInt(a,b){return Math.floor(Math.random()*(b-a+1))+a;}
-function pick(arr,ex){let i;do{i=randInt(0,arr.length-1);}while(i===ex);return{item:arr[i],idx:i};}
-function esc(t){const d=document.createElement('div');d.appendChild(document.createTextNode(t));return d.innerHTML;}
-function scrollDown(){chatArea.scrollTop=chatArea.scrollHeight;}
+
+let started=false, busy=false;
+const chatEl  = document.getElementById("chat");
+const msgEl   = document.getElementById("msg");
+const sendEl  = document.getElementById("sendBtn");
+const stEl    = document.getElementById("apiStatus");
+const keyEl   = document.getElementById("apiKeyInput");
+
+let HF_KEY = localStorage.getItem("hf_key") || "";
+function refreshStatus(){
+  if(HF_KEY){ stEl.textContent="aktiv \u2714"; stEl.className="api-st ok"; keyEl.value=HF_KEY; }
+  else { stEl.textContent="kein Key"; stEl.className="api-st no"; }
+}
+refreshStatus();
+document.getElementById("apiSaveBtn").addEventListener("click", function(){
+  var v = keyEl.value.trim();
+  if(v){ HF_KEY=v; localStorage.setItem("hf_key",v); }
+  else { HF_KEY=""; localStorage.removeItem("hf_key"); }
+  refreshStatus();
+});
+
+function ts(){ return new Date().toLocaleTimeString("de-DE",{hour:"2-digit",minute:"2-digit"}); }
+function rnd(a,b){ return Math.floor(Math.random()*(b-a+1))+a; }
+function pick(arr,ex){
+  var i; do { i=rnd(0,arr.length-1); } while(i===ex);
+  return {item:arr[i], idx:i};
+}
+function safe(t){
+  var d=document.createElement("div");
+  d.appendChild(document.createTextNode(t));
+  return d.innerHTML;
+}
+function scrollBot(){ chatEl.scrollTop=chatEl.scrollHeight; }
+
 function initChat(){
-  if(chatStarted)return;chatStarted=true;
-  document.getElementById('emptyState').remove();
-  const dd=document.createElement('div');dd.className='date-divider';dd.innerHTML='<span>Heute</span>';chatArea.appendChild(dd);
-  const sm=document.createElement('div');sm.className='system-msg';sm.innerHTML='<span>\ud83d\udd12 Ende-zu-Ende-verschl\u00fcsselt.<br>Niemand au\u00dferhalb kann mitlesen.</span>';chatArea.appendChild(sm);
+  if(started) return; started=true;
+  document.getElementById("emptyState").remove();
+  var dd=document.createElement("div"); dd.className="datediv";
+  dd.innerHTML="<span>Heute</span>"; chatEl.appendChild(dd);
+  var sm=document.createElement("div"); sm.className="sysmsg";
+  sm.innerHTML="<span>\ud83d\udd12 Ende-zu-Ende-verschl\u00fcsselt</span>"; chatEl.appendChild(sm);
 }
-function appendMsg(text,type,user){
-  const row=document.createElement('div');row.className='msg-row '+type;
-  if(type==='received'&&user){const l=document.createElement('div');l.className='sender-label';l.style.color=user.color;l.textContent=user.name;row.appendChild(l);}
-  const b=document.createElement('div');b.className='bubble';
-  b.innerHTML='<div class="bubble-text">'+esc(text)+'</div><div class="bubble-meta"><span class="bubble-time">'+now()+'</span>'+(type==='sent'?'<span class="check-icon">\u2713\u2713</span>':'')+'</div>';
-  row.appendChild(b);chatArea.appendChild(row);scrollDown();
+
+function addMsg(text,side,user){
+  var row=document.createElement("div"); row.className="mrow "+side;
+  if(side==="recv" && user){
+    var l=document.createElement("div"); l.className="slbl";
+    l.style.color=user.color; l.textContent=user.name; row.appendChild(l);
+  }
+  var b=document.createElement("div"); b.className="bub";
+  b.innerHTML='<div class="btxt">'+safe(text)+'</div>'
+    +'<div class="bmeta"><span class="btime">'+ts()+'</span>'
+    +(side==="sent"?'<span class="chk">\u2713\u2713</span>':"")
+    +'</div>';
+  row.appendChild(b); chatEl.appendChild(row); scrollBot();
 }
+
 function showTyping(user){
-  const row=document.createElement('div');row.className='typing-row';row.id='typingRow';
-  const l=document.createElement('div');l.className='typing-name';l.style.color=user.color;l.textContent=user.name;
-  const b=document.createElement('div');b.className='typing-bubble';b.innerHTML='<div class="dot"></div><div class="dot"></div><div class="dot"></div>';
-  row.appendChild(l);row.appendChild(b);chatArea.appendChild(row);scrollDown();
+  var row=document.createElement("div"); row.className="trow"; row.id="typingRow";
+  var l=document.createElement("div"); l.className="tnm"; l.style.color=user.color; l.textContent=user.name;
+  var b=document.createElement("div"); b.className="tbub";
+  b.innerHTML='<div class="dot"></div><div class="dot"></div><div class="dot"></div>';
+  row.appendChild(l); row.appendChild(b); chatEl.appendChild(row); scrollBot();
 }
-function removeTyping(){const e=document.getElementById('typingRow');if(e)e.remove();}
-function handleSend(){
-  if(busy)return;
-  const text=msgInput.value.trim();if(!text)return;
-  msgInput.value='';msgInput.style.height='auto';
-  initChat();appendMsg(text,'sent',null);busy=true;
-  const count=Math.random()<0.32?2:1;
-  const responders=[];let lastU=-1;
-  for(let i=0;i<count;i++){const{item:u,idx:ui}=pick(USERS,lastU);lastU=ui;const{item:r}=pick(ALL);responders.push({user:u,responseText:r});}
-  setTimeout(function(){
-    showTyping(responders[0].user);
-    setTimeout(function(){
-      removeTyping();appendMsg(responders[0].responseText,'received',responders[0].user);
-      if(responders.length<2){busy=false;return;}
-      setTimeout(function(){
-        showTyping(responders[1].user);
-        setTimeout(function(){
-          removeTyping();appendMsg(responders[1].responseText,'received',responders[1].user);busy=false;
-        },randInt(900,1600)+responders[1].responseText.length*16);
-      },randInt(400,900));
-    },randInt(1000,1800)+responders[0].responseText.length*18);
-  },randInt(700,1500));
+function hideTyping(){ var e=document.getElementById("typingRow"); if(e) e.remove(); }
+
+const HF_MODEL="mistralai/Mistral-7B-Instruct-v0.3";
+const SYS='Du bist Mitglied der WhatsApp-Gruppe "Fenstergucker". Antworte auf Deutsch, kurz und locker (max. 2 S\u00e4tze). Schreib \u00fcber das, was du gerade aus deinem Fenster siehst: Wolken, Schnee, Regen, Nebel, Eis, Steine, Gras, Sturm, Mond oder Sonne.';
+async function askHF(msg){
+  var prompt="<s>[INST] "+SYS+"\n\nGruppennachricht: "+msg+" [/INST]";
+  var r=await fetch("https://api-inference.huggingface.co/models/"+HF_MODEL,{
+    method:"POST",
+    headers:{"Authorization":"Bearer "+HF_KEY,"Content-Type":"application/json"},
+    body:JSON.stringify({inputs:prompt,parameters:{max_new_tokens:80,temperature:0.85,return_full_text:false}})
+  });
+  if(!r.ok) throw new Error("hf "+r.status);
+  var d=await r.json();
+  var t=Array.isArray(d)?d[0].generated_text:d.generated_text;
+  t=t.replace(/^\s*\[\/INST\]\s*/,"").replace(/^\s*<\/s>\s*/,"").trim();
+  var s=t.match(/[^.!?]+[.!?]+/g);
+  return s?s.slice(0,2).join(" ").trim():t.split("\n")[0].trim();
 }
-sendBtn.addEventListener('click',handleSend);
-msgInput.addEventListener('keydown',function(e){if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();handleSend();}});
-msgInput.addEventListener('input',function(){this.style.height='auto';this.style.height=Math.min(this.scrollHeight,110)+'px';});
+
+async function reply(userMsg, user){
+  showTyping(user);
+  var text;
+  try{
+    if(!HF_KEY) throw new Error("no key");
+    text=await askHF(userMsg);
+  } catch(e){
+    text=pick(ALL).item;
+  }
+  hideTyping();
+  addMsg(text,"recv",user);
+}
+
+async function handleSend(){
+  if(busy) return;
+  var text=msgEl.value.trim();
+  if(!text) return;
+  msgEl.value=""; msgEl.style.height="auto";
+  initChat();
+  addMsg(text,"sent",null);
+  busy=true;
+  try{
+    var delay=rnd(600,1300);
+    await new Promise(function(res){setTimeout(res,delay);});
+    var u1=pick(USERS).item;
+    await reply(text,u1);
+    if(Math.random()<0.35){
+      await new Promise(function(res){setTimeout(res,rnd(400,900));});
+      var u2; do { u2=pick(USERS).item; } while(u2.name===u1.name);
+      await reply(text,u2);
+    }
+  } finally {
+    hideTyping();
+    busy=false;
+  }
+}
+
+sendEl.addEventListener("click", handleSend);
+msgEl.addEventListener("keydown", function(e){
+  if(e.key==="Enter" && !e.shiftKey){ e.preventDefault(); handleSend(); }
+});
+msgEl.addEventListener("input", function(){
+  this.style.height="auto";
+  this.style.height=Math.min(this.scrollHeight,110)+"px";
+});
 </script>
 </body>
 </html>
